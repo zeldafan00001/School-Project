@@ -29,10 +29,7 @@ int optimodus, optiloc;
 
 // Voids
 void Game() {
-	isRunningGame = true;
-	printf("Es Spielen 3 Spieler!\n");
-	_getch();
-	printf("Wie heissen die Spieler?\n");
+	isRunningGame = true; // resete falls auf false ist!
 
 	// RESET ALL NUMBERS
 	for (s = 0; s < x; s++) {
@@ -40,8 +37,11 @@ void Game() {
 	}
 	// NAME
 	for (s = 0; s < x; s++) {
-		printf("SPIELER [%d] ", s + 1);
-		printf("\n\  ");
+		system("cls");
+		printf("\n\n\n\n\n\n\n\n");
+		printf("\t      Name der Spieler!\n");
+		printf("\t\t SPIELER [%d] \n", s + 1);
+		printf("\t\t ");
 		gets_s(ply[s]);
 		ply[s][strlen(ply[s])] = '\0';
 	}
