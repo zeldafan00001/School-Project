@@ -40,7 +40,7 @@ void Game() {
 		system("cls");
 		printf("\n\n\n\n\n\n\n\n");
 		printf("\t      Name der Spieler!\n");
-		printf("\t\t SPIELER [%d] \n", s + 1);
+		printf("\t\t SPIELER [%d] \n\n", s + 1);
 		printf("\t\t ");
 		gets_s(ply[s]);
 		ply[s][strlen(ply[s])] = '\0';
@@ -51,7 +51,7 @@ void Game() {
 	{
 		for (s = 0; s < x; s++)
 		{
-
+			system("cls");
 			if (onFeld == 1)
 			{
 				onFeld = s;
@@ -64,9 +64,9 @@ void Game() {
 			}
 			if (plyer[s] == 1)
 			{
-				printf("Aktuelle Punkte : %d\n", points);
-				printf("%s[%d] ist an der Reihe!\n", ply[s], s + 1);
-				printf("Drucke eine Taste zum rollen!\n\n");
+				printf("Punkte : %d\n", points);
+				printf("%s[%d]\n\n\n\n\n\n\n\n\n", ply[s], s + 1);
+				printf("\t    \xFE Drucke eine Taste \xFE\n\n");
 				_getch();
 
 				time_t te;
@@ -79,10 +79,16 @@ void Game() {
 				gewinner = s;
 				if (points >= p)
 				{
-					printf("%s Fliegt raus!", ply[s]);
+					system("cls");
+					printf("\n\n\n\n\n\n\n\n\n\n");
+					SetConsoleTextAttribute(hConsole, 12);
+					printf("\t\t     %s\n", ply[s]);
+					SetConsoleTextAttribute(hConsole, 15);
+					printf("\t\t Fliegt raus");
 					onFeld -= 1;
 					points = 0;
 					plyer[s] = 0;
+					Sleep(1500);
 					break;
 				}
 
@@ -199,23 +205,23 @@ void MenuGrap() {
 void optioGrap() {
 	if (optiloc == 1) {
 		system("cls");
-		printf("\n\n\n\n\n\n\n\n\n");
+		printf("\n\n\n\n\n\n\n\n\n\n\n");
 		SetConsoleTextAttribute(hConsole, 10);
 		printf("      \t      \xFE SPIELER [%d/10] \xFE   \n", x);
 		SetConsoleTextAttribute(hConsole, 15);
 		printf("      \t        LAENGE [%d/50] \n", p);
-		printf("\n\n\n\n\n\n\n\n\n\n");
+		printf("\n\n\n\n\n\n\n\n");
 
 
 	}
 	if (optiloc == 2) {
 		system("cls");
-		printf("\n\n\n\n\n\n\n\n\n");
+		printf("\n\n\n\n\n\n\n\n\n\n\n");
 		printf("      \t        SPIELER [%d/10]  \n", x);
 		SetConsoleTextAttribute(hConsole, 10);
 		printf("      \t      \xFE LAENGE [%d/50]\xFE \n", p);
 		SetConsoleTextAttribute(hConsole, 15);
-		printf("\n\n\n\n\n\n\n\n\n\n");
+		printf("\n\n\n\n\n\n\n\n");
 
 	}
 
