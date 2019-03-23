@@ -42,13 +42,17 @@ void points() {
 	pointY = rand() % 9;
 	pointX = rand() % 19;
 
-
-	if (map[pointY][pointX] == ' ' && pfield == 1) {
-		map[pointY][pointX] = 'P';
-		pfield == 0;
-		
+	while (map[pointY][pointX] == ' ' || map[pointY][pointX] == 'P')
+	{
+		if (map[pointY][pointX] == ' ' && pfield == 1) {
+			map[pointY][pointX] = 'P';
+			pfield = 0;
+		}
+		if (pfield == 0) {
+			break;
+		}
 	}
-	
+			
 }
 void input() {
 
@@ -62,7 +66,7 @@ void input() {
 				map[y][x] = ' ';
 				y--;
 				map[y][x] = 'O';
-				pfield == 1;
+				pfield = 1;
 				score++;
 			}
 			if (map[y2][x] == ' ') {
@@ -80,7 +84,7 @@ void input() {
 				map[y][x] = ' ';
 				y++;
 				map[y][x] = 'O';
-				pfield == 1;
+				pfield = 1;
 				score++;
 			}
 			if (map[y2][x] == ' ') {
@@ -98,7 +102,7 @@ void input() {
 				map[y][x] = ' ';
 				x--;
 				map[y][x] = 'O';
-				pfield == 1;
+				pfield = 1;
 				score++;
 			}
 			if (map[y][x2] == ' ') {
@@ -116,7 +120,7 @@ void input() {
 				map[y][x] = ' ';
 				x++;
 				map[y][x] = 'O';
-				pfield == 1;
+				pfield = 1;
 				score++;
 			}
 			if (map[y][x2] == ' ') {
