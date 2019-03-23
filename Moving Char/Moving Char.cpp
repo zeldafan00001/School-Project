@@ -3,16 +3,17 @@
 #include <string>
 #include <stdio.h>
 #include <conio.h>
+
 //   map[y][x] 
-char map[10][20] = {"###################",
-					"#      ##         #",
-					"#               ###",
-					"#  O              #",
-					"#        ##       #",
-					"#                 #",
-					"# ##              #",
-					"#      ##       ###",
-					"###################" };
+char map[10][20] = {"\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1",
+					"\xB1      \xB1\xB1         \xB1",
+					"\xB1               \xB1\xB1\xB1",
+					"\xB1  \xFE              \xB1",
+					"\xB1        \xB1\xB1       \xB1",
+					"\xB1                 \xB1",
+					"\xB1 \xB1\xB1              \xB1",
+					"\xB1      \xB1\xB1       \xB1\xB1\xB1",
+					"\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1\xB1" };
 
 int y = 3;
 int x = 3;
@@ -54,6 +55,10 @@ void points() {
 	}
 			
 }
+
+void botEnemy() {
+
+}
 void input() {
 
 	keyP = _getch();
@@ -65,14 +70,14 @@ void input() {
 			if (map[y2][x] == 'P') {
 				map[y][x] = ' ';
 				y--;
-				map[y][x] = 'O';
+				map[y][x] = '\xFE';
 				pfield = 1;
 				score++;
 			}
 			if (map[y2][x] == ' ') {
 				map[y][x] = ' ';
 				y--;
-				map[y][x] = 'O';
+				map[y][x] = '\xFE';
 			}
 		}
 	}
@@ -83,14 +88,14 @@ void input() {
 			if (map[y2][x] == 'P') {
 				map[y][x] = ' ';
 				y++;
-				map[y][x] = 'O';
+				map[y][x] = '\xFE';
 				pfield = 1;
 				score++;
 			}
 			if (map[y2][x] == ' ') {
 				map[y][x] = ' ';
 				y++;
-				map[y][x] = 'O';
+				map[y][x] = '\xFE';
 			}
 		}
 	}
@@ -101,14 +106,15 @@ void input() {
 			if (map[y][x2] == 'P') {
 				map[y][x] = ' ';
 				x--;
-				map[y][x] = 'O';
+				
+				map[y][x] = '\xFE';
 				pfield = 1;
 				score++;
 			}
 			if (map[y][x2] == ' ') {
 				map[y][x] = ' ';
 				x--;
-				map[y][x] = 'O';
+				map[y][x] = '\xFE';
 			}
 		}
 	}
@@ -119,14 +125,14 @@ void input() {
 			if (map[y][x2] == 'P') {
 				map[y][x] = ' ';
 				x++;
-				map[y][x] = 'O';
+				map[y][x] = '\xFE';
 				pfield = 1;
 				score++;
 			}
 			if (map[y][x2] == ' ') {
 				map[y][x] = ' ';
 				x++;
-				map[y][x] = 'O';
+				map[y][x] = '\xFE';
 			}
 		}
 	}
