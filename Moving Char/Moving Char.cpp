@@ -4,18 +4,20 @@
 #include <stdio.h>
 #include <conio.h>
 //   map[y][x] 
-char map[10][25] = { "#################",
-					"#O              #",
-					"#               #",
-					"#      ###      #",
-					"#      # #      #",
-					"#               #",
-					"#               #",
-					"#               #",
-					"#################" };
+char map[10][20] = {"###################",
+					"#      ##         #",
+					"#               ###",
+					"#  O              #",
+					"#        ##       #",
+					"#                 #",
+					"# ##              #",
+					"#      ##       ###",
+					"###################" };
 
-int y = 1;
-int x = 1;
+int y = 3;
+int x = 3;
+
+int pointY, pointX, point, pfield = 1, score = 0;
 
 bool gameover = false;
 int keyP;
@@ -26,10 +28,27 @@ void draw() {
 	for (int display = 0; display < 9; display++) {
 		printf("%s\n", map[display]);
 	}
-	printf("\n\n\n\nSteuerung :\n");
+	printf("CORDS : Y:%d | X:%d\nScore: %d\n\nSteuerung :\n", y+1, x+1, score);
 	printf("W - HOCH  | A - RUNTER\n");
 	printf("S - LINKS | D RECHTS\n");
 	printf("X = EXIT");
+}
+
+void points() {
+	time_t te;
+	te = time(NULL);
+	srand(te);
+
+	pointY = rand() % 9;
+	pointX = rand() % 19;
+
+
+	if (map[pointY][pointX] == ' ' && pfield == 1) {
+		map[pointY][pointX] = 'P';
+		pfield == 0;
+		
+	}
+	
 }
 void input() {
 
@@ -37,38 +56,74 @@ void input() {
 
 	if (keyP == 'W' || keyP == 'w') {
 		int y2 = y - 1;
-		if (map[y2][x] == ' ')
+		if (map[y2][x] == ' ' || map[y2][x] == 'P')
 		{
-			map[y][x] = ' ';
-			y--;
-			map[y][x] = 'O';
+			if (map[y2][x] == 'P') {
+				map[y][x] = ' ';
+				y--;
+				map[y][x] = 'O';
+				pfield == 1;
+				score++;
+			}
+			if (map[y2][x] == ' ') {
+				map[y][x] = ' ';
+				y--;
+				map[y][x] = 'O';
+			}
 		}
 	}
 	if (keyP == 'S' || keyP == 's') {
 		int y2 = y + 1;
-		if (map[y2][x] == ' ')
+		if (map[y2][x] == ' ' || map[y2][x] == 'P')
 		{
-			map[y][x] = ' ';
-			y++;
-			map[y][x] = 'O';
+			if (map[y2][x] == 'P') {
+				map[y][x] = ' ';
+				y++;
+				map[y][x] = 'O';
+				pfield == 1;
+				score++;
+			}
+			if (map[y2][x] == ' ') {
+				map[y][x] = ' ';
+				y++;
+				map[y][x] = 'O';
+			}
 		}
 	}
 	if (keyP == 'A' || keyP == 'a') {
 		int x2 = x - 1;
-		if (map[y][x2] == ' ')
+		if (map[y][x2] == ' ' || map[y][x2] == 'P')
 		{
-			map[y][x] = ' ';
-			x--;
-			map[y][x] = 'O';
+			if (map[y][x2] == 'P') {
+				map[y][x] = ' ';
+				x--;
+				map[y][x] = 'O';
+				pfield == 1;
+				score++;
+			}
+			if (map[y][x2] == ' ') {
+				map[y][x] = ' ';
+				x--;
+				map[y][x] = 'O';
+			}
 		}
 	}
 	if (keyP == 'D' || keyP == 'd') {
 		int x2 = x + 1;
-		if (map[y][x2] == ' ')
+		if (map[y][x2] == ' ' || map[y][x2] == 'P')
 		{
-			map[y][x] = ' ';
-			x++;
-			map[y][x] = 'O';
+			if (map[y][x2] == 'P') {
+				map[y][x] = ' ';
+				x++;
+				map[y][x] = 'O';
+				pfield == 1;
+				score++;
+			}
+			if (map[y][x2] == ' ') {
+				map[y][x] = ' ';
+				x++;
+				map[y][x] = 'O';
+			}
 		}
 	}
 	if (keyP == 'X' || keyP == 'x') {
@@ -84,6 +139,7 @@ int main()
 	system("mode 30, 17");
 	while (!gameover) {
 		system("cls");
+		points();
 		draw();
 		input();
 
