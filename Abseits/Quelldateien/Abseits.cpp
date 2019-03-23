@@ -91,7 +91,6 @@ void Game() {
 					Sleep(1500);
 					break;
 				}
-
 			} // if (plyer[s] = 1) ob der spieler spielen darf
 			gewinner = s;
 		} // forSchleifeGame
@@ -175,8 +174,6 @@ void MenuGrap() {
 		printf("      \t\t  OPTIONS      \n");
 		printf("      \t\t  BEENDEN      \n");
 		printf("\n\n\n\n\n\n\n\n");
-
-
 	}
 	if (menuloc == 2) {
 		system("cls");
@@ -187,7 +184,6 @@ void MenuGrap() {
 		SetConsoleTextAttribute(hConsole, 15);
 		printf("      \t\t  BEENDEN      \n");
 		printf("\n\n\n\n\n\n\n\n");
-
 	}
 	if (menuloc == 3) {
 		system("cls");
@@ -198,7 +194,6 @@ void MenuGrap() {
 		printf("      \t\t\xFE BEENDEN \xFE    \n");
 		SetConsoleTextAttribute(hConsole, 15);
 		printf("\n\n\n\n\n\n\n\n");
-
 	}
 }
 
@@ -211,8 +206,6 @@ void optioGrap() {
 		SetConsoleTextAttribute(hConsole, 15);
 		printf("      \t        LAENGE [%d/50] \n", p);
 		printf("\n\n\n\n\n\n\n\n");
-
-
 	}
 	if (optiloc == 2) {
 		system("cls");
@@ -222,14 +215,11 @@ void optioGrap() {
 		printf("      \t      \xFE LAENGE [%d/50]\xFE \n", p);
 		SetConsoleTextAttribute(hConsole, 15);
 		printf("\n\n\n\n\n\n\n\n");
-
 	}
-
 }
 void Optionen() {
 	do
 	{
-
 		optioGrap();
 
 		asciiValue = _getch();
@@ -253,7 +243,6 @@ void Optionen() {
 		}
 
 		if (asciiValue == 65 || asciiValue == 97) {
-
 			if (optiloc == 1)
 			{
 				x--;
@@ -271,7 +260,6 @@ void Optionen() {
 			}
 		}
 		if (asciiValue == 68 || asciiValue == 100) {
-
 			if (optiloc == 1)
 			{
 				x++;
@@ -295,7 +283,6 @@ void Optionen() {
 			break;
 		}
 	} while (Optio == true);
-
 }
 void MenuModus() {
 	if (modus == 1) {
@@ -333,7 +320,6 @@ int main()
 		{
 			MenuLogic();
 			MenuGrap();
-
 		} // while() == isRunningProg
 		MenuModus();
 	}
