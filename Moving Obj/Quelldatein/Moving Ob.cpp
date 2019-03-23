@@ -23,6 +23,10 @@ void draw() {
 	for (int display = 0; display < 9; display++) {
 		printf("%s\n", map[display]);
 	}
+	printf("\n\n\n\nSteuerung :\n");
+	printf("W - HOCH  | A - RUNTER\n");
+	printf("S - LINKS | D RECHTS\n");
+	printf("X = EXITsdsdsd");
 }
 void input() {
 
@@ -72,7 +76,7 @@ void input() {
 
 int main()
 {
-	system("mode 20, 15");
+	system("mode 30, 17");
 	while (!gameover) {
 		system("cls");
 		draw();
