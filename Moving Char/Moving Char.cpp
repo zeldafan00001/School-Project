@@ -4,11 +4,11 @@
 #include <stdio.h>
 #include <conio.h>
 //   map[y][x] 
-char map[10][20] = { "#################",
+char map[10][25] = { "#################",
 					"#O              #",
 					"#               #",
-					"#               #",
-					"#               #",
+					"#      ###      #",
+					"#      # #      #",
 					"#               #",
 					"#               #",
 					"#               #",
@@ -19,6 +19,9 @@ int x = 1;
 
 bool gameover = false;
 int keyP;
+char keyPC;
+HANDLE  hConsole;
+
 void draw() {
 	for (int display = 0; display < 9; display++) {
 		printf("%s\n", map[display]);
@@ -26,7 +29,7 @@ void draw() {
 	printf("\n\n\n\nSteuerung :\n");
 	printf("W - HOCH  | A - RUNTER\n");
 	printf("S - LINKS | D RECHTS\n");
-	printf("X = EXITsdsdsd");
+	printf("X = EXIT");
 }
 void input() {
 
@@ -76,6 +79,8 @@ void input() {
 
 int main()
 {
+	
+	hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	system("mode 30, 17");
 	while (!gameover) {
 		system("cls");
