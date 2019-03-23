@@ -20,9 +20,9 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{676E1ACC-7136-4FD4-BB6B-79890D0C3E88}</ProjectGuid>
+    <ProjectGuid>{44294D1D-B77F-424A-B720-01E33D2CE2F3}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>MovingOb</RootNamespace>
+    <RootNamespace>MovingChar</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -151,7 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Moving Ob.cpp" />
+    <ClCompile Include="Moving Char.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
