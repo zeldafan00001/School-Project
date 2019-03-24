@@ -1,20 +1,172 @@
-// Spiel1.cpp : Diese Datei enthält die Funktion "main". Hier beginnt und endet die Ausführung des Programms.
-//
+#include <windows.h>
+#include <time.h>
+#include <string>
+#include <stdio.h>
+#include <conio.h>
 
-#include <iostream>
+// MAP
+//		[y][x]
+bool running = false;
 
-int main()
-{
-    std::cout << "Hello World!\n"; 
+int y = 2, y2;
+int x = 2, x2;
+int keyP;
+int score = 0;
+int wall = 250, wallR;
+int Ry, Rx, pfield = 1;
+
+
+char map[20][50] = {"#################################################",	
+					"#                                               #",
+					"# S                                             #",
+					"#                                               #",
+					"#                                               #",
+					"#                                               #",
+					"#                                               #",
+					"#                                               #",
+					"#                                               #",
+					"#                                               #",
+					"#                                               #",
+					"#                                             Z #",
+					"#                                               #",
+					"#################################################"};	
+
+void draw() {
+	for (int display = 0; display < 15; display++) {
+		printf("\t\t\t\t%s\n", map[display]);
+	}
+	printf("\t\t\t\tScore : %d %d ", score);
 }
 
-// Programm ausführen: STRG+F5 oder "Debuggen" > Menü "Ohne Debuggen starten"
-// Programm debuggen: F5 oder "Debuggen" > Menü "Debuggen starten"
 
-// Tipps für den Einstieg: 
-//   1. Verwenden Sie das Projektmappen-Explorer-Fenster zum Hinzufügen/Verwalten von Dateien.
-//   2. Verwenden Sie das Team Explorer-Fenster zum Herstellen einer Verbindung mit der Quellcodeverwaltung.
-//   3. Verwenden Sie das Ausgabefenster, um die Buildausgabe und andere Nachrichten anzuzeigen.
-//   4. Verwenden Sie das Fenster "Fehlerliste", um Fehler anzuzeigen.
-//   5. Wechseln Sie zu "Projekt" > "Neues Element hinzufügen", um neue Codedateien zu erstellen, bzw. zu "Projekt" > "Vorhandenes Element hinzufügen", um dem Projekt vorhandene Codedateien hinzuzufügen.
-//   6. Um dieses Projekt später erneut zu öffnen, wechseln Sie zu "Datei" > "Öffnen" > "Projekt", und wählen Sie die SLN-Datei aus.
+void points() {
+	time_t te;
+	te = time(NULL);
+	srand(te);
+
+	Ry = rand() % 15;
+	Rx = rand() % 49;
+
+	while (map[Ry][Rx] == ' ' || map[Ry][Rx] == 'P')
+	{
+		if (map[Ry][Rx] == ' ' && pfield == 1) {
+			map[Ry][Rx] = 'P';
+			pfield = 0;
+		}
+		if (pfield == 0) {
+			break;
+		}
+	}
+
+}
+
+void input() 
+{
+	keyP = _getch();
+
+	if (keyP == 'W' || keyP == 'w') {
+		y2 = y - 1;
+		if (map[y2][x] != '#')
+		{
+			if (map[y2][x] == '-') {
+				map[y][x] = ' ';
+				y--;
+				score += 10;
+				map[y][x] = 'S';
+			}
+			if (map[y2][x] == 'X') {
+				map[y][x] = ' ';
+				y--;
+				map[y][x] = 'X';
+				running = true;
+			}
+			if (map[y2][x] == ' ') {
+				map[y][x] = ' ';
+				y--;
+				map[y][x] = 'S';
+			}
+		}
+	}
+	if (keyP == 'S' || keyP == 's') {
+		y2 = y + 1;
+		if (map[y2][x] != '#')
+		{
+			if (map[y2][x] == '-') {
+				map[y][x] = ' ';
+				y++;
+				score += 10;
+				map[y][x] = 'S';
+			}
+			if (map[y2][x] == 'X') {
+				map[y][x] = ' ';
+				y++;
+				map[y][x] = 'X';
+				running = true;
+			}
+			if (map[y2][x] == ' ') {
+				map[y][x] = ' ';
+				y++;
+				map[y][x] = 'S';
+			}
+		}
+	}
+	if (keyP == 'A' || keyP == 'a') {
+		x2 = x - 1;
+		if (map[y][x2] != '#')
+		{
+			if (map[y][x2] == '-') {
+				map[y][x] = ' ';
+				x--;
+				score += 10;
+				map[y][x] = 'S';
+			}
+			if (map[y][x2] == 'X') {
+				map[y][x] = ' ';
+				x--;
+				map[y][x] = 'X';
+				running = true;
+			}
+			if (map[y][x2] == ' ') {
+				map[y][x] = ' ';
+				x--;
+				map[y][x] = 'S';
+			}
+		}
+	}
+	if (keyP == 'D' || keyP == 'd') {
+		x2 = x + 1;
+		if (map[y][x2] != '#')
+		{
+			if (map[y][x2] == '-') {
+				map[y][x] = ' ';
+				x++;
+				score += 10;
+				map[y][x] = 'S';
+			}
+			if (map[y][x2] == 'X') {
+				map[y][x] = ' ';
+				y++;
+				map[y][x] = 'X';
+				running = true;
+			}
+			if (map[y][x2] == ' ') {
+				map[y][x] = ' ';
+				x++;
+				map[y][x] = 'S';
+			}
+		}
+	}
+	if (keyP == 'X' || keyP == 'x') {
+		exit(-1);
+	}
+}
+int main()
+{
+	while (!running) {
+		system("cls");
+		points();
+		draw();
+		input();
+	}
+}
+
