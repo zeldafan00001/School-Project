@@ -69,7 +69,6 @@ void points() {
 }
 
 void botEnemy() {
-	system("Color 0C");
 	// | 0(A) = x-- | 1(D) = x++ | 2(W) = y-- | 3(S) = y++ |
 	time_t te;
 	te = time(NULL);
@@ -148,7 +147,6 @@ void botEnemy() {
 			}
 		}
 	}
-	system("Color 0F");
 }
 	
 void input() {
