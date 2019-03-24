@@ -87,7 +87,7 @@ void botEnemy() {
 				pfield = 1;
 			}
 			if (map[gy][x2] == ' ') {
-				map[gy][gx] = ' ';
+				map[gy][gx] = ' ');
 				gx--;
 				map[gy][gx] = 'X';
 			}
